@@ -32,10 +32,10 @@
                                     <label class="form-check-label fs-1" for="firstCheckbox">類別名稱*</label>
                                     <input name="name" class="form-check-input me-1 fs-1 w-75" type="text" value="" required>
                                 </li>
-                                <li class="list-group-item" style="height: 150px;">
+                                <li class="list-group-item">
                                     <label class="form-check-label fs-1" for="secondCheckbox">類別圖片</label>
                                     <input name="image[]" class="form-check-input me-1 fs-1 w-75" type="file" value=""
-                                        style="height: 100px;" multiple required accept="image/*">
+                                        style="height: 100px;" multiple accept="image/*">
                                 </li>
                                 <li class="list-group-item" style="height: 300px">
                                     <label class="form-check-label fs-1" for="thirdCheckbox">類別描述</label>

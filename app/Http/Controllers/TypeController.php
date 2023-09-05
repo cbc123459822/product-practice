@@ -18,7 +18,8 @@ class TypeController extends Controller
      */
     public function index()
     {
-        return view('product_type.typeList');
+        $types = ProductType::get();
+        return view('product_type.typeList', compact('types'));
     }
 
     /**
@@ -34,6 +35,7 @@ class TypeController extends Controller
      */
     public function store(Request $request)
     {
+
         $type = ProductType::create([
             'name' => $request->name,
             'desc' => $request->desc,
@@ -59,9 +61,10 @@ class TypeController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit($id)
     {
-        return view('product_type.editTypeList');
+        $type = ProductType::find($id);
+        return view('product_type.editTypeList', compact('type'));
     }
 
     /**
@@ -69,7 +72,25 @@ class TypeController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $type = ProductType::find($id);
+        $type->update([
+            'name' => $request->name,
+            'desc' => $request->desc,
+        ]);
+
+        if ($request->hasFile('image')) {
+            foreach ($type->productTypeImg ?? [] as $value) {
+                $this->fileService->deleteUpload($value->img_path);
+                $value->delete();
+            }
+            foreach ($request->image ?? [] as $value) {
+                ProductTypeImg::create([
+                    'img_path' => $this->fileService->imgUpload($value, 'type-image'),
+                    'product_type_id' => $id,
+                ]);
+            }
+        }
+        return redirect(route('type.index'));
     }
 
     /**
@@ -77,6 +98,13 @@ class TypeController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $type = ProductType::find($id);
+        foreach ($type->productTypeImg ?? [] as $value) {
+            $this->fileService->deleteUpload($value->img_path);
+            $value->delete();
+        }
+        $type->delete();
+
+        return redirect(route('type.index'));
     }
 }

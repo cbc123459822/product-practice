@@ -938,6 +938,7 @@
                                                             <div>
                                                                 <form action="{{ route('product.delete', ['id' => $product->id]) }}" method="post">
                                                                     @csrf
+                                                                    @method('DELETE')
                                                                     <button class="dropdown-item" type="submit">
                                                                         <i class="fa-regular fa-trash-can me-3"></i>
                                                                         刪除

@@ -12,4 +12,10 @@ class ProductTypeImg extends Model
     protected $table = 'product_type_imgs';
 
     protected $fillable = ['img_path', 'product_type_id'];
+
+    public function productType()
+    {
+        // hasOne (關聯,對方的欄位,自己的欄位)
+        return $this->hasOne(ProductType::class, 'id', 'product_type_id');
+    }
 }

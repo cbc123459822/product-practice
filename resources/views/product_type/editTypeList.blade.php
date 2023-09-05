@@ -24,56 +24,28 @@
             <div class="col-xl-12 col-12 mb-5">
                 <!-- card -->
                 <div class="card h-100 card-lg">
-                    {{-- <form action="{{ route('type.update', ['id' => $product->id]) }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('type.update', ['type' => $type->id]) }}" method="POST" enctype="multipart/form-data">
                         @csrf
+                        @method('put')
                         <div class="card-body p-0">
                             <ul class="list-group">
                                 <li class="list-group-item">
                                     <label class="form-check-label fs-1" for="firstCheckbox">產品名稱</label>
-                                    <input name="name" class="form-check-input me-1 fs-1 w-75" type="text" value="{{ $product->name }}" required>
-                                </li>
-                                <li class="list-group-item" style="height: 150px;">
-                                    <img style="width: 80px;" src="{{ asset($product->img_path) }}" alt="">
-                                    <label class="form-check-label fs-1" for="secondCheckbox">產品圖片</label>
-                                    <input class="form-check-input me-1 fs-1 w-75" type="file" name="image" value=""
-                                        style="height: 100px;" accept="image/*">
+                                    <input name="name" class="form-check-input me-1 fs-1 w-75" type="text" value="{{ $type->name }}" required>
                                 </li>
                                 <li class="list-group-item">
-                                    <label class="form-check-label fs-1" for="thirdCheckbox">產品價格</label>
-                                    <input class="form-check-input me-1 fs-1 w-75" name="price" type="number" value="{{ $product->price }}" required>
-                                </li>
-                                <li class="list-group-item">
-                                    <label class="form-check-label fs-1" for="fourthCheckbox">顯示狀態</label>
-                                    <label class="fs-1">
-                                        <input
-                                            type="radio"
-                                            id="appear"
-                                            name="status"
-                                            value="1"
-                                            @if ($product->status === 1)
-                                                checked
-                                            @endif
-                                        />
-                                        要顯示
-                                    </label>
-                                    <label class="fs-1">
-                                        <input
-                                            type="radio"
-                                            id="no-appear"
-                                            name="status"
-                                            value="2"
-                                            @if ($product->status === 2)
-                                                checked
-                                            @endif
-                                        />
-                                        不顯示
-                                    </label>
-
+                                    @foreach ($type->productTypeImg ?? [] as $item)
+                                        <img style="width: 80px;" src="{{ asset($item->img_path) }}" alt="">
+                                    @endforeach
+                                    <hr>
+                                    <label class="form-check-label fs-1" for="secondCheckbox">類別圖片</label>
+                                    <input class="form-check-input me-1 fs-1 w-75" type="file" name="image[]" value=""
+                                        style="height: 100px;" multiple accept="image/*">
                                 </li>
                                 <li class="list-group-item" style="height: 300px">
-                                    <label class="form-check-label fs-1" for="thirdCheckbox">產品描述</label>
+                                    <label class="form-check-label fs-1" for="thirdCheckbox">類別描述</label>
                                     <hr>
-                                    <textarea name="desc" class="w-100" style="resize: none; min-height: 150px;">{{ $product->desc }}</textarea>
+                                    <textarea name="desc" class="w-100" style="resize: none; min-height: 150px;">{{ $type->desc }}</textarea>
                                 </li>
                             </ul>
                             <div class="btn-group justify-content-center d-flex">
@@ -81,7 +53,7 @@
                                 <button type="submit" class="btn btn-primary m-3">儲存按鈕</button>
                             </div>
                         </div>
-                    </form> --}}
+                    </form>
                     <!-- card body -->
                 </div>
 
