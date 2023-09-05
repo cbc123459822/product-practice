@@ -66,7 +66,9 @@
       <a href="https://freshcart.codescandy.com/pages/shop-wishlist.html" class="text text-decoration-none">
         <img src="{{ asset('image/heart.svg') }}" alt="">
       </a>
-      <img src="{{ asset('image/person.svg') }}" alt="" class="ps-xl-3">
+      <a href="{{ route('product.index') }}">
+        <img src="{{ asset('image/person.svg') }}" alt="" class="ps-xl-3">
+      </a>
     </div>
     <a href="https://freshcart.codescandy.com/pages/shop-wishlist.html" class="p-xl-4">
       <img src="{{ asset('image/bag-check.svg') }}" alt="">

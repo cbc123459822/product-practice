@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\TypeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,7 +20,6 @@ Route::get('/', function () {
 });
 
 Route::prefix('/product')->group(function () {
-
     Route::get('/list', [ProductController::class, 'index'])->name('product.index');
     
     Route::get('/create', [ProductController::class, 'create'])->name('product.create');
@@ -28,9 +28,10 @@ Route::prefix('/product')->group(function () {
     Route::get('/edit/{id}', [ProductController::class, 'edit'])->name('product.edit');
     Route::post('/update/{id}', [ProductController::class, 'update'])->name('product.update');
     
-    
     Route::post('/delete/{id}', [ProductController::class, 'destroy'])->name('product.delete');
 });
+
+Route::resource('/type', TypeController::class);
 
 
 
