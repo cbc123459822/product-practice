@@ -94,17 +94,41 @@ class TypeController extends Controller
     }
 
     /**
+     * 寫法一
      * Remove the specified resource from storage.
+     */
+    // public function destroy(string $id)
+    // {
+    //     $type = ProductType::find($id);
+    //     foreach ($type->productTypeImg ?? [] as $value) {
+    //         $this->fileService->deleteUpload($value->img_path);
+    //         $value->delete();
+    //     }
+    //     $type->delete();
+
+    //     return redirect(route('type.index'));
+    // }
+
+    /**
+     *  params $id : 產品類別的id
+     *  return 'success' : 'fail' =>表示成功或失敗
      */
     public function destroy(string $id)
     {
         $type = ProductType::find($id);
-        foreach ($type->productTypeImg ?? [] as $value) {
-            $this->fileService->deleteUpload($value->img_path);
-            $value->delete();
-        }
-        $type->delete();
 
-        return redirect(route('type.index'));
+        $result = 'success';
+
+        if ($type) {
+            foreach ($type->productTypeImg ?? [] as $value) {
+                $this->fileService->deleteUpload($value->img_path);
+                $value->delete();
+            }
+            $type->delete();
+        } else {
+            $result = 'fail';
+        }
+
+        return $result;
     }
 }
