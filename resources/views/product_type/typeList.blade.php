@@ -115,7 +115,7 @@
                                                             </button>
                                                         </form> --}}
                                                         {{-- 寫法二 --}}
-                                                        <button class="dropdown-item" type="button" onclick="deleteData({{$type->id}}, {{ $type->name }})">
+                                                        <button class="dropdown-item" type="button" onclick="deleteData({{$type->id}}, '{{ $type->name }}')">
                                                             <i class="fa-regular fa-trash-can me-3"></i>
                                                             刪除
                                                         </button>
