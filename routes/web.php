@@ -16,9 +16,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [FrontController::class, 'index'])->name('front.index');
 
 Route::prefix('/product')->group(function () {
     Route::get('/list', [ProductController::class, 'index'])->name('product.index');

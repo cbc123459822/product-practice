@@ -311,177 +311,26 @@
       <div class="container text-start  "> <!--商品特價中-->
         <div class="container text-center">
           <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
-            <div class="col">
-              <div class="p-3">
-                <div class="card">
-                  <img src="{{ asset('image/product-img-1.jpg') }}" alt="">
-                  <div class="card-body">
-                    <h6 class="card-title text-start"><small>Snack & Munchies</small></h6>
-                    <h6 class="card-subtitle mb-2 text-body-secondary text-start">Haldiram's Sev Bhujia</h6>
-                    <p class="card-text text-start">star 星星評價</p>
-                    <div class="row d-flex justify-content-between align-items-center">
-                      <h6 class="col-4 card-link px-0 mt-2">
-                        <samll>$24</samll>
-                      </h6>
-                      <button type="button" class="col-4  btn btn-primary"><small>+Add</small></button>
+            @foreach ($products ?? [] as $product)
+              <div class="col">
+                <div class="p-3">
+                  <div class="card">
+                    <img src="{{ asset($product->img_path) }}" alt="">
+                    <div class="card-body">
+                      {{-- <h6 class="card-title text-start"><small>Snack & Munchies</small></h6> --}}
+                      <h6 class="card-subtitle mb-2 text-body-secondary text-start">{{ $product->name }}</h6>
+                      <p class="card-text text-start">{{ $product->desc }}</p>
+                      <div class="row d-flex justify-content-between align-items-center">
+                        <h6 class="col-4 card-link px-0 mt-2">
+                          <small>${{ $product->price }}</small>
+                        </h6>
+                        <button type="button" class="col-4  btn btn-primary"><small>+Add</small></button>
+                      </div>
                     </div>
-
                   </div>
                 </div>
               </div>
-            </div>
-            <div class="col">
-              <div class="p-3">
-                <div class="card">
-                  <img src="{{ asset('image/product-img-1.jpg') }}" alt="">
-                  <div class="card-body">
-                    <h6 class="card-title text-start"><small>Snack & Munchies</small></h6>
-                    <h6 class="card-subtitle mb-2 text-body-secondary text-start">Haldiram's Sev Bhujia</h6>
-                    <p class="card-text text-start">star 星星評價</p>
-                    <div class="row d-flex justify-content-between align-items-center">
-                      <h6 class="col-4 card-link px-0 mt-2">
-                        <samll>$24</samll>
-                      </h6>
-                      <button type="button" class="col-4  btn btn-primary"><small>+Add</small></button>
-                    </div>
-
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="p-3">
-                <div class="card">
-                  <img src="{{ asset('image/product-img-1.jpg') }}" alt="">
-                  <div class="card-body">
-                    <h6 class="card-title text-start"><small>Snack & Munchies</small></h6>
-                    <h6 class="card-subtitle mb-2 text-body-secondary text-start">Haldiram's Sev Bhujia</h6>
-                    <p class="card-text text-start">star 星星評價</p>
-                    <div class="row d-flex justify-content-between align-items-center">
-                      <h6 class="col-4 card-link px-0 mt-2">
-                        <samll>$24</samll>
-                      </h6>
-                      <button type="button" class="col-4  btn btn-primary"><small>+Add</small></button>
-                    </div>
-
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="p-3">
-                <div class="card">
-                  <img src="{{ asset('image/product-img-1.jpg') }}" alt="">
-                  <div class="card-body">
-                    <h6 class="card-title text-start"><small>Snack & Munchies</small></h6>
-                    <h6 class="card-subtitle mb-2 text-body-secondary text-start">Haldiram's Sev Bhujia</h6>
-                    <p class="card-text text-start">star 星星評價</p>
-                    <div class="row d-flex justify-content-between align-items-center">
-                      <h6 class="col-4 card-link px-0 mt-2">
-                        <samll>$24</samll>
-                      </h6>
-                      <button type="button" class="col-4  btn btn-primary"><small>+Add</small></button>
-                    </div>
-
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="p-3">
-                <div class="card">
-                  <img src="{{ asset('image/product-img-1.jpg') }}" alt="">
-                  <div class="card-body">
-                    <h6 class="card-title text-start"><small>Snack & Munchies</small></h6>
-                    <h6 class="card-subtitle mb-2 text-body-secondary text-start">Haldiram's Sev Bhujia</h6>
-                    <p class="card-text text-start">star 星星評價</p>
-                    <div class="row d-flex justify-content-between align-items-center">
-                      <h6 class="col-4 card-link px-0 mt-2">
-                        <samll>$24</samll>
-                      </h6>
-                      <button type="button" class="col-4  btn btn-primary"><small>+Add</small></button>
-                    </div>
-
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="p-3">
-                <div class="card">
-                  <img src="{{ asset('image/product-img-1.jpg') }}" alt="">
-                  <div class="card-body">
-                    <h6 class="card-title text-start"><small>Snack & Munchies</small></h6>
-                    <h6 class="card-subtitle mb-2 text-body-secondary text-start">Haldiram's Sev Bhujia</h6>
-                    <p class="card-text text-start">star 星星評價</p>
-                    <div class="row d-flex justify-content-between align-items-center">
-                      <h6 class="col-4 card-link px-0 mt-2">
-                        <samll>$24</samll>
-                      </h6>
-                      <button type="button" class="col-4  btn btn-primary"><small>+Add</small></button>
-                    </div>
-
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="p-3">
-                <div class="card">
-                  <img src="{{ asset('image/product-img-1.jpg') }}" alt="">
-                  <div class="card-body">
-                    <h6 class="card-title text-start"><small>Snack & Munchies</small></h6>
-                    <h6 class="card-subtitle mb-2 text-body-secondary text-start">Haldiram's Sev Bhujia</h6>
-                    <p class="card-text text-start">star 星星評價</p>
-                    <div class="row d-flex justify-content-between align-items-center">
-                      <h6 class="col-4 card-link px-0 mt-2">
-                        <samll>$24</samll>
-                      </h6>
-                      <button type="button" class="col-4  btn btn-primary"><small>+Add</small></button>
-                    </div>
-
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="p-3">
-                <div class="card">
-                  <img src="{{ asset('image/product-img-1.jpg') }}" alt="">
-                  <div class="card-body">
-                    <h6 class="card-title text-start"><small>Snack & Munchies</small></h6>
-                    <h6 class="card-subtitle mb-2 text-body-secondary text-start">Haldiram's Sev Bhujia</h6>
-                    <p class="card-text text-start">star 星星評價</p>
-                    <div class="row d-flex justify-content-between align-items-center">
-                      <h6 class="col-4 card-link px-0 mt-2">
-                        <samll>$24</samll>
-                      </h6>
-                      <button type="button" class="col-4  btn btn-primary"><small>+Add</small></button>
-                    </div>
-
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="p-3">
-                <div class="card">
-                  <img src="{{ asset('image/product-img-1.jpg') }}" alt="">
-                  <div class="card-body">
-                    <h6 class="card-title text-start"><small>Snack & Munchies</small></h6>
-                    <h6 class="card-subtitle mb-2 text-body-secondary text-start">Haldiram's Sev Bhujia</h6>
-                    <p class="card-text text-start">star 星星評價</p>
-                    <div class="row d-flex justify-content-between align-items-center">
-                      <h6 class="col-4 card-link px-0 mt-2">
-                        <samll>$24</samll>
-                      </h6>
-                      <button type="button" class="col-4  btn btn-primary"><small>+Add</small></button>
-                    </div>
-
-                  </div>
-                </div>
-              </div>
-            </div>
+            @endforeach
           </div>
         </div>
       </div>
