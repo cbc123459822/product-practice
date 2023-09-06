@@ -26,11 +26,24 @@ class ProductController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $products = Product::get();
+
+        $products = Product::query();
+
+        $keyword = $request->keyword ?? '';
+
+
+        if ($request->filled('keyword')) {
+            $products->where('name', $keyword)->orWhere('desc', $keyword);
+        }
+
+
+        $products = $products->get();
+
+
         //產品列表頁
-        return view('product.cartlist', compact('products'));
+        return view('product.cartlist', compact('products', 'keyword'));
     }
 
     /**

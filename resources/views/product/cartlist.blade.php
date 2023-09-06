@@ -29,8 +29,8 @@
                             <div class="col-md-6 col-12 mb-2 mb-md-0 flex-row">
                                 <!-- form -->
                                 <form action="{{ route('product.index') }}" method="GET" class="d-flex column-gap-3" role="search">
-                                    <input class="form-control" name="keyword" type="text" placeholder="搜尋名稱或描述" aria-label="Search">
-                                    <button class="btn btn-success flex-shrink-0">搜尋</button>
+                                    <input class="form-control" name="keyword" type="text" placeholder="搜尋名稱或描述" aria-label="Search" value="{{ $keyword }}">
+                                    <button type="submit" class="btn btn-success flex-shrink-0">搜尋</button>
                                 </form>
                                 <a href="{{ route('product.create') }}" class="btn btn-primary">新增產品按鈕
                                     {{-- <button href="/Addcartlist" class="btn btn-primary"></button> --}}
@@ -122,6 +122,7 @@
                                     @endforeach
                                 </tbody>
                             </table>
+                            
                         </div>
                     </div>
                     <div class="border-top d-md-flex justify-content-between align-items-center p-6">
