@@ -1,5 +1,13 @@
 @extends('Layout.template')
 
+@section('head')
+    <style>
+        .pagination {
+            justify-content: center;
+        }
+    </style>
+@endsection
+
 @section('main')
     <div class="container">
         <!-- row -->
@@ -122,10 +130,10 @@
                                     @endforeach
                                 </tbody>
                             </table>
-                            
                         </div>
                     </div>
-                    <div class="border-top d-md-flex justify-content-between align-items-center p-6">
+                    {{ $products->links() }}
+                    {{-- <div class="border-top d-md-flex justify-content-between align-items-center p-6">
                         <span>Showing 1 to 8 of 12 entries</span>
                         <nav class="mt-2 mt-md-0">
                             <ul class="pagination mb-0 ">
@@ -137,7 +145,7 @@
                                 <li class="page-item"><a class="page-link" href="#">Next</a></li>
                             </ul>
                         </nav>
-                    </div>
+                    </div> --}}
                 </div>
 
             </div>
