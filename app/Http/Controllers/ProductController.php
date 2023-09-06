@@ -37,10 +37,12 @@ class ProductController extends Controller
         if ($request->filled('keyword')) {
             $products->where('name', 'like', "%{$keyword}%")->orWhere('desc', 'like', "%{$keyword}%");
         }
-
-
+        
+        
         $products = $products->paginate(5);
-        // dd($products);
+
+        // $products->withPath('/product/list?keyword=' . $keyword);
+        $products->appends(['keyword' => $keyword]);
 
         //產品列表頁
         return view('product.cartlist', compact('products', 'keyword'));
