@@ -61,20 +61,12 @@ Route::prefix('/message')->group(function() {
 
     Route::post('/replayStore/{id}', [MessageController::class, 'replayStore'])->name('replayStore');
     Route::post('/store', [MessageController::class, 'store'])->name('messageStore');
-
-    Route::get('/edit/{id}', [MessageController::class, 'edit'])->name('messageEdit');
     Route::put('/update/{id}', [MessageController::class, 'update'])->name('messageUpdate');
     // 刪除
     Route::delete('/destroy/{id}', [MessageController::class, 'destroy'])->name('messageDestroy');
 });
 
 Route::prefix('/reply')->group(function () {
-    Route::get('/index', [ReplyController::class, 'index'])->name('replyIndex');
-
-    Route::get('/add', [ReplyController::class, 'create'])->name('replyAdd');
-    Route::post('/store', [ReplyController::class, 'store'])->name('replyStore');
-
-    Route::get('/edit/{id}', [ReplyController::class, 'edit'])->name('replyEdit');
     Route::put('/update/{id}', [ReplyController::class, 'update'])->name('replyUpdate');
     // 刪除
     Route::delete('/destroy/{id}', [ReplyController::class, 'destroy'])->name('replyDestroy');

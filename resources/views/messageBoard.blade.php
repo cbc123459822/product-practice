@@ -59,15 +59,6 @@
                                 </div>
                                 <button type="submit" class="btn btn-primary">傳送訊息</button>
                             </form>
-
-                            {{-- <form action="{{route('messageStore')}}" method="post">
-                            @csrf
-                            <div class="form-floating mb-3">
-                                <input type="text" name="message" class="form-control" id="floatingInput" placeholder="留下您的訊息">
-                                <label for="floatingInput">回覆留言板</label>
-                            </div>
-                            <button type="submit" class="btn btn-primary">傳送訊息</button>
-                        </form> --}}
                         </div>
                     </div>
                 @endforeach

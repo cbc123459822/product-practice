@@ -50,8 +50,6 @@ class MessageController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        // dd($request->all());
 
         $messageBoard = Message::create([
             'message' => $request->message,
@@ -60,23 +58,6 @@ class MessageController extends Controller
         // value是每一筆回覆訊息
 
         return redirect(route('messageIndex'));
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-        // dd($id);
     }
 
     /**
