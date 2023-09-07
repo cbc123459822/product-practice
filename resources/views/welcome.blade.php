@@ -93,7 +93,7 @@
       <div class="dropdown ps-xl-3 ">
         <a class="btn  dropdown-toggle fw-bolder" href="#" role="button" data-bs-toggle="dropdown"
           aria-expanded="false">
-          Home
+          Dashboard
         </a>
         <ul class="dropdown-menu">
           <li><a class="dropdown-item" href="#">Action</a></li>
@@ -515,7 +515,7 @@
               </p>
               <p><a class="link-opacity-10-hover col-12 text-decoration-none   " href="#">Paan corner</a></p>
               <p><a class="link-opacity-10-hover col-12 text-decoration-none   " href="#">Pharma & wellness</a></p>
-              <p><a class="link-opacity-10-hover col-12 text-decoration-none   " href="#">Home & office</a></p>
+              <p><a class="link-opacity-10-hover col-12 text-decoration-none   " href="#">Dashboard & office</a></p>
               <p><a class="link-opacity-10-hover col-12 text-decoration-none   " href="#">Pet care</a></p>
             </div>
           </div>

@@ -1,9 +1,12 @@
 <?php
 
+use App\Http\Controllers\ProfileController;
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\TypeController;
 use App\Http\Controllers\FrontController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\MessageController;
+use App\Http\Controllers\ReplyController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,6 +18,22 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+require __DIR__.'/auth.php';
 
 Route::get('/', [FrontController::class, 'index'])->name('front.index');
 
@@ -30,11 +49,33 @@ Route::prefix('/product')->group(function () {
     Route::delete('/delete/{id}', [ProductController::class, 'destroy'])->name('product.delete');
 });
 
+
 Route::resource('/type', TypeController::class);
 
 Route::get('/playground', [FrontController::class, 'test']);
 Route::post('/fetch/test', [FrontController::class, 'fetchTest']);
 
 
+Route::prefix('/message')->group(function() {
+    Route::get('/index', [MessageController::class, 'index'])->name('messageIndex');
 
+    Route::post('/replayStore/{id}', [MessageController::class, 'replayStore'])->name('replayStore');
+    Route::post('/store', [MessageController::class, 'store'])->name('messageStore');
 
+    Route::get('/edit/{id}', [MessageController::class, 'edit'])->name('messageEdit');
+    Route::put('/update/{id}', [MessageController::class, 'update'])->name('messageUpdate');
+    // 刪除
+    Route::delete('/destroy/{id}', [MessageController::class, 'destroy'])->name('messageDestroy');
+});
+
+Route::prefix('/reply')->group(function () {
+    Route::get('/index', [ReplyController::class, 'index'])->name('replyIndex');
+
+    Route::get('/add', [ReplyController::class, 'create'])->name('replyAdd');
+    Route::post('/store', [ReplyController::class, 'store'])->name('replyStore');
+
+    Route::get('/edit/{id}', [ReplyController::class, 'edit'])->name('replyEdit');
+    Route::put('/update/{id}', [ReplyController::class, 'update'])->name('replyUpdate');
+    // 刪除
+    Route::delete('/destroy/{id}', [ReplyController::class, 'destroy'])->name('replyDestroy');
+});

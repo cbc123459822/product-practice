@@ -1,5 +1,5 @@
 {{-- 連結的樣板 --}}
-@extends('Layout.template')
+@extends('Templates.template')
 
 {{-- 樣板裡放入的資料 --}}
 @section('head')
