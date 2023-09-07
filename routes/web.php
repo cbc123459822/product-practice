@@ -37,7 +37,7 @@ require __DIR__.'/auth.php';
 
 Route::get('/', [FrontController::class, 'index'])->name('front.index');
 
-Route::prefix('/product')->group(function () {
+Route::middleware('auth')->prefix('/product')->group(function () {
     Route::get('/list', [ProductController::class, 'index'])->name('product.index');
     
     Route::get('/create', [ProductController::class, 'create'])->name('product.create');
@@ -56,7 +56,7 @@ Route::get('/playground', [FrontController::class, 'test']);
 Route::post('/fetch/test', [FrontController::class, 'fetchTest']);
 
 
-Route::prefix('/message')->group(function() {
+Route::middleware('auth')->prefix('/message')->group(function() {
     Route::get('/index', [MessageController::class, 'index'])->name('messageIndex');
 
     Route::post('/replayStore/{id}', [MessageController::class, 'replayStore'])->name('replayStore');
@@ -66,7 +66,7 @@ Route::prefix('/message')->group(function() {
     Route::delete('/destroy/{id}', [MessageController::class, 'destroy'])->name('messageDestroy');
 });
 
-Route::prefix('/reply')->group(function () {
+Route::middleware('auth')->prefix('/reply')->group(function () {
     Route::put('/update/{id}', [ReplyController::class, 'update'])->name('replyUpdate');
     // 刪除
     Route::delete('/destroy/{id}', [ReplyController::class, 'destroy'])->name('replyDestroy');

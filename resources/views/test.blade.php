@@ -1,5 +1,6 @@
 @extends('Templates.template')
 
+
 @section('main')
   <button type="button" class="btn btn-primary" onclick="fetchData()">測試</button>
 @endsection
