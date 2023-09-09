@@ -6,7 +6,8 @@
   <div>step1</div>
   <form action="{{ route('test.step1Store') }}" method="POST">
     @csrf
-    <input type="tel" name="phone" value="{{ $phone }}">
+    <input type="tel" name="phone" value="{{ old('phone', $phone) }}">
+    <input type="text" name="name" value="{{ old('name', $name) }}">
     <button type="submit">下一步</button>
   </form>
 @endsection

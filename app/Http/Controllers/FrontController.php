@@ -76,16 +76,19 @@ class FrontController extends Controller
         // // 清除session中key的資料
         // $request->session()->forget('mytest');
         $phone = $request->session()->get('form_phone', '');
+        $name = $request->session()->get('form_name', '');
 
-        return view('test',compact('phone'));
+        return view('test',compact('phone', 'name'));
     }
     public function step1_store(Request $request)
     {
         $request->validate([
             'phone' => 'required',
+            'name' => 'required',
         ]);
 
         $request->session()->put('form_phone', $request->phone);
+        $request->session()->put('form_name', $request->name);
 
         return redirect(route('test.step2'));
     }
