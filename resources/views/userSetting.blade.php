@@ -30,6 +30,9 @@
       </div>
     </form>
   </div>
+  @if ($errors->first())
+    <input id="error" type="hidden" value="{{ $errors->first() }}">
+  @endif
 @endsection
 
 @section('js')
@@ -48,12 +51,13 @@
     </script>
 
     @if ($errors->first())
-      <script>
-        Swal.fire({
-          icon: 'error',
-          title: '{{ $errors->first() }}',
-        })
-      </script>
+    <script>
+      const error = document.querySelector('input#error');
+      Swal.fire({
+        icon: 'error',
+        title: error.value,
+      })
+    </script>
     @endif
 
     {{-- @error('nameError')

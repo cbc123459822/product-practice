@@ -5,6 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Bootstrap demo</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 
@@ -49,7 +50,7 @@
 <body>
   <!--頂層回首頁 FreshCart-->
   <div class="d-xl-flex flex-row mb-3 container ">
-    <a href="https://freshcart.codescandy.com/index.html" class="p-xl-3 fw-bolder fs-2 text-dark text-decoration-none ">
+    <a href="{{ route('front.index') }}" class="p-xl-3 fw-bolder fs-2 text-dark text-decoration-none ">
       <img src="{{ asset('image/freshcart-logo.svg') }}" alt=""></a>
     <div class="input-group mb-3 pt-4 w-25">
       <input type="text" class="form-control" placeholder="Search for products" aria-label="Recipient's username"
@@ -63,15 +64,38 @@
         <img src="{{ asset('image/geo-alt.svg') }}" alt="" class="pe-xl-2">Location
       </button>
     </div>
-    <div class="pt-xl-4  ms-auto ">
+    <div class="ms-auto d-flex gap-3 align-items-center">
+      @auth
+        <div>
+          hi, {{ Auth::user()->name }}
+        </div>
+        <div>
+          <form method="POST" action="{{ route('logout') }}">
+            @csrf
+            <button type="submit">登出</button>
+          </form>
+        </div>
+      @endauth
+
+      @guest
+        <div>
+          <a href="{{ route('login') }}">
+            hi, 訪客,點此登入
+          </a>
+        </div>
+      @endguest
+        
       <a href="https://freshcart.codescandy.com/pages/shop-wishlist.html" class="text text-decoration-none">
         <img src="{{ asset('image/heart.svg') }}" alt="">
       </a>
+      <a href="#" class="text text-decoration-none">
+        <i class="bi bi-cart"></i>
+      </a>
       <a href="{{ route('user.info') }}">
-        <img src="{{ asset('image/person.svg') }}" alt="" class="ps-xl-3">
+        <img src="{{ asset('image/person.svg') }}" alt="">
       </a>
     </div>
-    <a href="https://freshcart.codescandy.com/pages/shop-wishlist.html" class="p-xl-4">
+    <a href="https://freshcart.codescandy.com/pages/shop-wishlist.html">
       <img src="{{ asset('image/bag-check.svg') }}" alt="">
     </a>
 

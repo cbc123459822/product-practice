@@ -3,6 +3,12 @@
 
 @section('main')
   <button type="button" class="btn btn-primary" onclick="fetchData()">測試</button>
+  <div>step1</div>
+  <form action="{{ route('test.step1Store') }}" method="POST">
+    @csrf
+    <input type="tel" name="phone" value="{{ $phone }}">
+    <button type="submit">下一步</button>
+  </form>
 @endsection
 
 @section('js')

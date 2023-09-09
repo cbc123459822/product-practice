@@ -52,7 +52,11 @@ Route::middleware('auth')->prefix('/product')->group(function () {
 
 Route::resource('/type', TypeController::class);
 
-Route::get('/playground', [FrontController::class, 'test']);
+Route::get('/playground', [FrontController::class, 'test'])->name('test.step1');
+Route::post('/playground-step1/store', [FrontController::class, 'step1_store'])->name('test.step1Store');
+Route::get('/playground-step2', [FrontController::class, 'test2'])->name('test.step2');
+
+
 Route::post('/fetch/test', [FrontController::class, 'fetchTest']);
 
 

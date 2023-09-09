@@ -9,10 +9,12 @@ use Illuminate\Support\Facades\Validator;
 
 class FrontController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
+        $request->session()->flush();
         // status 
         $products = Product::where('status', 1)->get();
+        
         return view('welcome', compact('products'));
     }
 
@@ -38,8 +40,6 @@ class FrontController extends Controller
             'name.required' => '必填',
             'name.max' => '字數過長',
         ]);
-
-
         // $validator = Validator::make($request->all(), [
         //     'name' => 'required|max:255',
         // ]);
@@ -71,9 +71,34 @@ class FrontController extends Controller
 
     public function test(Request $request)
     {
-        dd($request->all());
-        return view('test');
+        // // 取得session中key的資料 (參數1=>自行設定的key, 參數2 => 假設沒有找到則使用預設資料)
+        // $hasBeen = $request->session()->get('mytest', '沒有去過step2');
+        // // 清除session中key的資料
+        // $request->session()->forget('mytest');
+        $phone = $request->session()->get('form_phone', '');
+
+        return view('test',compact('phone'));
     }
+    public function step1_store(Request $request)
+    {
+        $request->validate([
+            'phone' => 'required',
+        ]);
+
+        $request->session()->put('form_phone', $request->phone);
+
+        return redirect(route('test.step2'));
+    }
+    public function test2(Request $request)
+    {
+        // 設置session中key的資料
+        // $request->session()->put('mytest', '曾經到過step2');
+        $phone = $request->session()->get('form_phone', '');
+
+        return view('test2',compact('phone'));
+    }
+
+
     public function fetchTest(Request $request)
     {
         dd($request->all());
