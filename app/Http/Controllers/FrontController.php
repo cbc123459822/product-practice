@@ -11,7 +11,6 @@ class FrontController extends Controller
 {
     public function index(Request $request)
     {
-        $request->session()->flush();
         // status 
         $products = Product::where('status', 1)->get();
         
