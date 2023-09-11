@@ -14,11 +14,15 @@ class RouteServiceProvider extends ServiceProvider
      * The path to your application's "home" route.
      *
      * Typically, users are redirected here after authentication.
-     *
+     * 前台首頁
      * @var string
      */
     public const HOME = '/';
 
+    /**
+     * 後台首頁
+     * @var string
+     */
     public const ADMIN = '/admin';
 
     /**

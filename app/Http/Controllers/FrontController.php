@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cart;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -59,6 +60,50 @@ class FrontController extends Controller
         ]);
 
         return redirect(route('user.info'));
+    }
+
+    public function product()
+    {
+        $products = Product::where('status', 1)->get();
+        return view('frontProduct', compact('products'));
+    }
+
+    public function add_cart(Request $request)
+    {
+
+        $request->validate([
+            'qty' => 'required|min:1|numeric',
+            'product_id' => 'required|exists:products,id|numeric'
+        ]);
+
+        // 寫法一
+        $oddCart = Cart::where('user_id', $request->user()->id)->where('product_id', $request->product_id)->first();
+        if ($oddCart) {
+            $cart = $oddCart->update([
+                'qty' => $oddCart->qty + $request->qty,
+            ]);
+        } else {
+            $cart = Cart::create([
+                'product_id' => $request->product_id,
+                'qty' => $request->qty,
+                'user_id' => $request->user()->id,
+            ]);
+        }
+
+        // 寫法二
+        // User::updateOrCreate(['name' => 'Lisi'], ['age' => 20]);
+        // $cart = Cart::updateOrCreate([
+        //     'user_id' => $request->user()->id,
+        //     'product_id' => $request->product_id,
+        // ], [
+        //     'qty' => 456,
+        // ]);
+        
+
+        return (object)[
+            'code' => $cart ? 1 : 0,
+            'product_id' => $request->product_id,
+        ];
     }
 
 

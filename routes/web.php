@@ -22,6 +22,7 @@ use App\Http\Controllers\BackendController;
 
 // 誰都可以進
 Route::get('/', [FrontController::class, 'index'])->name('front.index');
+Route::get('/products', [FrontController::class, 'product'])->name('front.products');
 Route::post('/fetch/test', [FrontController::class, 'fetchTest']);
 Route::get('/message/index', [MessageController::class, 'index'])->name('messageIndex');
 
@@ -43,6 +44,8 @@ Route::middleware('auth')->group(function() {
         Route::get('/', [FrontController::class, 'user_info'])->name('user.info');
         Route::post('/update', [FrontController::class, 'user_info_update'])->name('user.info.update');
     });
+
+    Route::post('/products/add-carts', [FrontController::class, 'add_cart'])->name('front.addCart');
 });
 
 // 只有管理者可以進
