@@ -8,6 +8,7 @@ use App\Http\Controllers\FrontController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\ReplyController;
 use App\Http\Controllers\BackendController;
+use App\Http\Controllers\shopController;
 
 /*
 |--------------------------------------------------------------------------
@@ -54,13 +55,13 @@ Route::middleware(['auth', 'role.weight: 1'])->prefix('admin')->group(function (
 
     Route::prefix('/product')->group(function () {
         Route::get('/list', [ProductController::class, 'index'])->name('product.index');
-        
+
         Route::get('/create', [ProductController::class, 'create'])->name('product.create');
         Route::post('/store', [ProductController::class, 'store'])->name('product.store');
-        
+
         Route::get('/edit/{id}', [ProductController::class, 'edit'])->name('product.edit');
         Route::put('/update/{id}', [ProductController::class, 'update'])->name('product.update');
-        
+
         Route::delete('/delete/{id}', [ProductController::class, 'destroy'])->name('product.delete');
     });
 
@@ -73,3 +74,8 @@ Route::middleware(['auth', 'role.weight: 1'])->prefix('admin')->group(function (
 
 
 require __DIR__.'/auth.php';
+
+    Route::get('/step01',[shopController::class, 'shop'])->name('shop');
+    Route::get('/step02',[shopController::class, 'delivery'])->name('delivery');
+    Route::get('/step03',[shopController::class, 'payment'])->name('payment');
+    Route::get('/step04',[shopController::class, 'thankyou'])->name('thankyou');

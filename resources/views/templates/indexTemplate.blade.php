@@ -84,11 +84,11 @@
           </a>
         </div>
       @endguest
-        
+
       <a href="https://freshcart.codescandy.com/pages/shop-wishlist.html" class="text text-decoration-none">
         <img src="{{ asset('image/heart.svg') }}" alt="">
       </a>
-      <a href="#" class="text text-decoration-none">
+      <a href="{{route('shop')}}" class="text text-decoration-none">
         <i class="bi bi-cart"></i>
       </a>
       <a href="{{ route('user.info') }}">
