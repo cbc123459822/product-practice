@@ -9,6 +9,10 @@ use App\Http\Controllers\MessageController;
 use App\Http\Controllers\ReplyController;
 use App\Http\Controllers\BackendController;
 use App\Http\Controllers\shopController;
+use App\Http\Controllers\CartController;
+use App\Http\Controllers\CompleteController;
+use App\Http\Controllers\DeliveryController;
+use App\Http\Controllers\PaymentController;
 
 /*
 |--------------------------------------------------------------------------
